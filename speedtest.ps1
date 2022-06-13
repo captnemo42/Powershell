@@ -1,5 +1,5 @@
 
-Send-MailMessage -From 'admin@domain.com' -To 'admin@domain.com' -Subject 'Testing connections started' -Body "See attached log" -Attachments .\speedtest.csv -Priority High -DeliveryNotificationOption OnSuccess, OnFailure -SmtpServer 'glue.lazbeer.com'
+Send-MailMessage -From 'admin@domain.com' -To 'admin@domain.com' -Subject 'Testing connections started' -Body "See attached log" -Attachments .\speedtest.csv -Priority High -DeliveryNotificationOption OnSuccess, OnFailure -SmtpServer 'conoso.com'
 
 function get-site(){
 	Param(
@@ -14,7 +14,7 @@ $timeTaken = Measure-Command -Expression {
 $milliseconds = $timeTaken.TotalMilliseconds
 $milliseconds = [Math]::Round($milliseconds, 1)
 if($milliseconds -gt 1000){
-Send-MailMessage -From 'admin@domain.com' -To 'outage@domain.com' -Subject 'Slow connection detected' -Body "Site slow see attached log" -Attachments .\speedtest.csv -Priority High -DeliveryNotificationOption OnSuccess, OnFailure -SmtpServer 'glue.lazbeer.com'
+Send-MailMessage -From 'admin@domain.com' -To 'outage@domain.com' -Subject 'Slow connection detected' -Body "Site slow see attached log" -Attachments .\speedtest.csv -Priority High -DeliveryNotificationOption OnSuccess, OnFailure -SmtpServer 'conoso.com'
 }
 return "$(get-date) , $site , $milliseconds "
 }
